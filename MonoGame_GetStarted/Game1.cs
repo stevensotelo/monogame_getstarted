@@ -12,13 +12,19 @@ namespace MonoGame_GetStarted
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        MainFigure protagonista;
+
+        PlayerStatic psFace;
+        PlayerAnimated paGuy;
+
+        private const int FRAMES = 12;
+        private const int FRAMESPERSEC = 10;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            protagonista = new MainFigure();
+            psFace = new PlayerStatic();
+            paGuy = new PlayerAnimated(FRAMES,FRAMESPERSEC);
         }
 
         /// <summary>
@@ -30,7 +36,8 @@ namespace MonoGame_GetStarted
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            protagonista.initialize();
+            psFace.initialize();
+            paGuy.initialize(graphics);
             base.Initialize();
         }
 
@@ -44,7 +51,8 @@ namespace MonoGame_GetStarted
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            protagonista.load(Content);
+            psFace.load(Content);
+            paGuy.load(Content);
         }
 
         /// <summary>
@@ -67,7 +75,8 @@ namespace MonoGame_GetStarted
                 Exit();*/
 
             // TODO: Add your update logic here
-
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            paGuy.update(elapsed);
             base.Update(gameTime);
         }
 
@@ -81,7 +90,8 @@ namespace MonoGame_GetStarted
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            protagonista.draw(spriteBatch);
+            psFace.draw(spriteBatch);
+            paGuy.draw(spriteBatch);
             spriteBatch.End();
 
 

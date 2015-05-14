@@ -30,12 +30,12 @@ namespace MonoGame_GetStarted.Modelos
 
         public virtual void initialize()
         {
-
+            position = Vector2.Zero;
         }
 
         public virtual void load(ContentManager content)
         {
-
+            texture = content.Load<Texture2D>(resource);
         }
 
         public virtual void update(Vector2 move)
