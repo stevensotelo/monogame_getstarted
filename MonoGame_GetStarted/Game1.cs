@@ -16,6 +16,8 @@ namespace MonoGame_GetStarted
         PlayerStatic psFace;
         PlayerAnimated paGuy;
 
+        Background background;
+
         private const int FRAMES = 12;
         private const int FRAMESPERSEC = 10;
 
@@ -25,6 +27,7 @@ namespace MonoGame_GetStarted
             Content.RootDirectory = "Content";
             psFace = new PlayerStatic();
             paGuy = new PlayerAnimated(FRAMES,FRAMESPERSEC);
+            background = new Background(FRAMESPERSEC);
         }
 
         /// <summary>
@@ -38,6 +41,7 @@ namespace MonoGame_GetStarted
             // TODO: Add your initialization logic here
             psFace.initialize();
             paGuy.initialize(graphics);
+            background.initialize();
             base.Initialize();
         }
 
@@ -53,6 +57,7 @@ namespace MonoGame_GetStarted
             // TODO: use this.Content to load your game content here
             psFace.load(Content);
             paGuy.load(Content);
+            background.load(Content);
         }
 
         /// <summary>
@@ -75,8 +80,9 @@ namespace MonoGame_GetStarted
                 Exit();*/
 
             // TODO: Add your update logic here
-            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            /*float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             paGuy.update(elapsed);
+            background.update(graphics.GraphicsDevice);*/
             base.Update(gameTime);
         }
 
@@ -91,7 +97,8 @@ namespace MonoGame_GetStarted
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             psFace.draw(spriteBatch);
-            paGuy.draw(spriteBatch);
+            /*paGuy.draw(spriteBatch);
+            background.draw(spriteBatch);*/
             spriteBatch.End();
 
 

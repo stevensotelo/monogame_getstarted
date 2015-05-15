@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="Modelos\Background.cs" />
     <Compile Include="Modelos\Figure.cs" />
     <Compile Include="Modelos\FigureAnimated.cs" />
     <Compile Include="Modelos\PlayerAnimated.cs" />
